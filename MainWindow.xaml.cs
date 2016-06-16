@@ -309,6 +309,45 @@ namespace ind
             }
             return (temp);
         }
+        string umn(string temp)
+        {
+
+            int POP = 0;
+            string temp1, temp2, temp3;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\w+[\.|\,]*\w*\*\-*\w+[\.|\,]*\w*");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+                    temp1 = textBox1.Text;
+                    int N = 0, m = temp1.Length;
+                    for (int i = 0; i < m; i++)
+                    {
+                        if (temp1[i] == '*')
+                        {
+                            temp2 = temp1.Substring(0, i);
+                            temp3 = temp1.Substring(i + 1);
+                            textBox1.Text = (Math.Round((Convert.ToDouble(temp2) * (Convert.ToDouble(temp3))), 6, MidpointRounding.AwayFromZero)).ToString();
+                            break;
+                        }
+                    }
+
+                    temp = temp.Replace(temp1, textBox1.Text);
+                    if ((temp[0] == '-') && (temp[1] == '-')) temp = temp.Replace("--", "");
+                    else temp = temp.Replace("--", "+");
+
+                }
+                else
+                {
+
+                    POP = 1;
+                }
+            }
+            return (temp);
+        }
 
     }
 
