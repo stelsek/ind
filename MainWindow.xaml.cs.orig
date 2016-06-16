@@ -60,12 +60,10 @@ namespace ind
             N = y + triY(Convert.ToDouble(H.Text), monster(x, y));
             return (N);
         }
-<<<<<<< HEAD
         private void button_Click(object sender, RoutedEventArgs e)
         {
             main();
         }
-=======
 
         double triY(double h, double f)
         {
@@ -81,6 +79,7 @@ namespace ind
             return (vnesh2);
 
         }
+<<<<<<< HEAD
 
         double vnesh1(double X)
         {
@@ -94,9 +93,285 @@ namespace ind
 
             return (Convert.ToDouble(obr(x, y)));
 
+=======
+        double obr(double x, double y)
+        {
+            string s = twoCha.Text;
+            s = s.Replace("x", x.ToString());
+            s = s.Replace("y", y.ToString());
+            s = SKib(s);
+            s = skob(s);
+            s = Step(s);
+            s = delen(s);
+            s = umn(s);
+            s = minus(s);
+            s = sum(s);
+            if ((s[0] == '-') && (s[1] == '-')) s = s.Replace("--", "-");
+
+            return (Convert.ToDouble(s));
+        }
+        string Step(string temp)
+        {
+            int POP = 0;
+            string temp1, temp2, temp3;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\-*\w+\^\-*\w+[\.|\,]*\w*");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+                    temp1 = textBox1.Text;
+                    int N = 0, m = temp1.Length;
+                    for (int i = 0; i < m; i++)
+                    {
+                        if (temp1[i] == '^')
+                            if (temp1[i + 1] != '-')
+                            {
+                                temp2 = temp1.Substring(0, i);
+                                temp3 = temp1.Substring(i + 1);
+                                double a, b;
+                                a = Convert.ToDouble(temp2);
+                                b = Convert.ToDouble(temp3);
+                                textBox1.Text = Math.Round((Math.Pow(a, b)), 6, MidpointRounding.AwayFromZero).ToString();
+                                break;
+                            }
+                        /* else
+                            {
+                                temp2 = temp1.Substring(0, i);
+                                temp3 = temp1.Substring(i + 1);
+                                double a, b;
+                                a = Convert.ToDouble(temp2);
+                                b = Convert.ToDouble(temp3);
+                                textBox1.Text = Math.Round((Math.Sqrt(a)), 6, MidpointRounding.AwayFromZero).ToString();
+                                break;
+                            }*/
+                    }
+                    temp = temp.Replace(temp1, textBox1.Text);
+
+
+                }
+                else
+                {
+                    POP = 1;
+                }
+            }
+            return (temp);
+        }
+        string SKib(string temp)
+        {
+            int POP = 0;
+            string temp1, temp2, temp3;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\(\-\w+\)");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+                    temp1 = textBox1.Text;
+                    temp2 = temp1;
+                    temp2 = temp2.Replace("(", "");
+                    temp2 = temp2.Replace(")", "");
+                    temp = temp.Replace(temp1, temp2);
+
+
+                }
+                else
+                {
+                    POP = 1;
+                }
+            }
+            return (temp);
+        }
+        string skob(string temp)
+        {
+            int POP = 0;
+            string temp1, temp2;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\(.+\)");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+
+                    temp1 = textBox1.Text;
+                    temp2 = temp1;
+
+                    temp2 = SKib(temp2);
+                    temp2 = delen(temp1);
+                    temp2 = umn(temp1);
+                    temp2 = minus(temp1);
+                    temp2 = sum(temp1);
+                    temp2 = temp2.Replace("(", "");
+                    temp2 = temp2.Replace(")", "");
+                    temp = temp.Replace(temp1, temp2);
+
+
+                }
+
+
+
+                else
+                {
+                    POP = 1;
+                }
+            }
+            return (temp);
+        }
+        string sum(string temp)
+        {
+            int POP = 0;
+            string temp1, temp2, temp3;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\-*\w+[\.|\,]*\w*\+\-*\w+[\.|\,]*\w*");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+                    temp1 = textBox1.Text;
+                    int N = 0, m = temp1.Length;
+                    for (int i = 0; i < m; i++)
+                    {
+
+                        if (temp1[i] == '+')
+                        {
+                            temp2 = temp1.Substring(0, i);
+                            temp3 = temp1.Substring(i + 1);
+                            textBox1.Text = (Math.Round((Convert.ToDouble(temp2) + (Convert.ToDouble(temp3))), 6, MidpointRounding.AwayFromZero)).ToString();
+                            break;
+                        }
+                    }
+                    temp = temp.Replace(temp1, textBox1.Text);
+
+                }
+
+
+
+                else
+                {
+                    POP = 1;
+                }
+            }
+            return (temp);
+        }
+        string delen(string temp)
+        {
+            int POP = 0;
+            string temp1, temp2, temp3;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\-*\w+[\.|\,]*\w*\/\-*\w+[\.|\,]*\w*");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+                    temp1 = textBox1.Text;
+                    int N = 0, m = temp1.Length;
+                    for (int i = 0; i < m; i++)
+                    {
+                        if (temp1[i] == '/')
+                        {
+                            temp2 = temp1.Substring(0, i);
+                            temp3 = temp1.Substring(i + 1);
+                            textBox1.Text = (Math.Round((Convert.ToDouble(temp2) / (Convert.ToDouble(temp3))), 6, MidpointRounding.AwayFromZero)).ToString();
+                            break;
+                        }
+                    }
+                    temp = temp.Replace(temp1, textBox1.Text);
+
+
+                }
+                else
+                {
+                    POP = 1;
+                }
+            }
+            return (temp);
+        }
+        string minus(string temp)
+        {
+            int POP = 0;
+            string temp1, temp2, temp3;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\w+[\.|\,]*\w*\-\-*\w+[\.|\,]*\w*");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+                    temp1 = textBox1.Text;
+                    int N = 0, m = temp1.Length;
+                    for (int i = 0; i < m; i++)
+                    {
+                        if (temp1[i] == '-')
+                        {
+                            temp2 = temp1.Substring(0, i);
+                            temp3 = temp1.Substring(i + 1);
+                            textBox1.Text = (Math.Round((Convert.ToDouble(temp2) - (Convert.ToDouble(temp3))), 6, MidpointRounding.AwayFromZero)).ToString();
+                            break;
+                        }
+                    }
+                    temp = temp.Replace(temp1, textBox1.Text);
+
+
+                }
+                else
+                {
+                    POP = 1;
+                }
+            }
+            return (temp);
+        }
+        string umn(string temp)
+        {
+
+            int POP = 0;
+            string temp1, temp2, temp3;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\w+[\.|\,]*\w*\*\-*\w+[\.|\,]*\w*");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+                    temp1 = textBox1.Text;
+                    int N = 0, m = temp1.Length;
+                    for (int i = 0; i < m; i++)
+                    {
+                        if (temp1[i] == '*')
+                        {
+                            temp2 = temp1.Substring(0, i);
+                            temp3 = temp1.Substring(i + 1);
+                            textBox1.Text = (Math.Round((Convert.ToDouble(temp2) * (Convert.ToDouble(temp3))), 6, MidpointRounding.AwayFromZero)).ToString();
+                            break;
+                        }
+                    }
+
+                    temp = temp.Replace(temp1, textBox1.Text);
+                    if ((temp[0] == '-') && (temp[1] == '-')) temp = temp.Replace("--", "");
+                    else temp = temp.Replace("--", "+");
+
+                }
+                else
+                {
+
+                    POP = 1;
+                }
+            }
+            return (temp);
+>>>>>>> obr
         }
 
->>>>>>> vet2
     }
 
 }
