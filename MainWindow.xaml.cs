@@ -59,5 +59,11 @@ namespace ind
             N = y + triY(Convert.ToDouble(H.Text), monster(x, y));
             return (N);
         }
+        double triY(double h, double f)
+        {
+            double triY = h * f;
+            return (triY);
+        }
     }
+
 }
