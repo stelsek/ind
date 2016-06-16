@@ -72,6 +72,22 @@ namespace ind
             return (vnesh2);
 
         }
+        double obr(double x, double y)
+        {
+            string s = twoCha.Text;
+            s = s.Replace("x", x.ToString());
+            s = s.Replace("y", y.ToString());
+            s = SKib(s);
+            s = skob(s);
+            s = Step(s);
+            s = delen(s);
+            s = umn(s);
+            s = minus(s);
+            s = sum(s);
+            if ((s[0] == '-') && (s[1] == '-')) s = s.Replace("--", "-");
+
+            return (Convert.ToDouble(s));
+        }
     }
 
 }
