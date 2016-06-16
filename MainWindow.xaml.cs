@@ -59,5 +59,9 @@ namespace ind
             N = y + triY(Convert.ToDouble(H.Text), monster(x, y));
             return (N);
         }
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            main();
+        }
     }
 }
