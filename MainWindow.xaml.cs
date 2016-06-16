@@ -64,6 +64,14 @@ namespace ind
             double triY = h * f;
             return (triY);
         }
+        double vnesh2(double x, double y)
+        {
+
+            double vnesh2;
+            vnesh2 = Convert.ToDouble(Y0.Text) + Convert.ToDouble(H.Text) / 2 * obr(x, y);
+            return (vnesh2);
+
+        }
     }
 
 }
