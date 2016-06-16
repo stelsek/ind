@@ -137,6 +137,33 @@ namespace ind
             }
             return (temp);
         }
+        string SKib(string temp)
+        {
+            int POP = 0;
+            string temp1, temp2, temp3;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\(\-\w+\)");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+                    temp1 = textBox1.Text;
+                    temp2 = temp1;
+                    temp2 = temp2.Replace("(", "");
+                    temp2 = temp2.Replace(")", "");
+                    temp = temp.Replace(temp1, temp2);
+
+
+                }
+                else
+                {
+                    POP = 1;
+                }
+            }
+            return (temp);
+        }
 
     }
 
