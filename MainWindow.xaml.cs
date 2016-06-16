@@ -53,6 +53,7 @@ namespace ind
                 XXX.Text += i + "\n";
             }
         }
+
         double nahN(double y, double x)
         {
             double N;
@@ -63,5 +64,36 @@ namespace ind
         {
             main();
         }
+
+        double triY(double h, double f)
+        {
+            double triY = h * f;
+            return (triY);
+        }
+
+        double vnesh2(double x, double y)
+        {
+
+            double vnesh2;
+            vnesh2 = Convert.ToDouble(Y0.Text) + Convert.ToDouble(H.Text) / 2 * obr(x, y);
+            return (vnesh2);
+
+        }
+
+        double vnesh1(double X)
+        {
+            double Temp;
+            Temp = X + Convert.ToDouble(H.Text) / 2;
+            return (Temp);
+        }
+
+        double Funk_f(double x, double y)
+        {
+
+            return (Convert.ToDouble(obr(x, y)));
+
+        }
+
     }
+
 }
