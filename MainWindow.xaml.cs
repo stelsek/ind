@@ -164,6 +164,43 @@ namespace ind
             }
             return (temp);
         }
+        string skob(string temp)
+        {
+            int POP = 0;
+            string temp1, temp2;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\(.+\)");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+
+                    temp1 = textBox1.Text;
+                    temp2 = temp1;
+
+                    temp2 = SKib(temp2);
+                    temp2 = delen(temp1);
+                    temp2 = umn(temp1);
+                    temp2 = minus(temp1);
+                    temp2 = sum(temp1);
+                    temp2 = temp2.Replace("(", "");
+                    temp2 = temp2.Replace(")", "");
+                    temp = temp.Replace(temp1, temp2);
+
+
+                }
+
+
+
+                else
+                {
+                    POP = 1;
+                }
+            }
+            return (temp);
+        }
 
     }
 
