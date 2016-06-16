@@ -88,6 +88,56 @@ namespace ind
 
             return (Convert.ToDouble(s));
         }
+        string Step(string temp)
+        {
+            int POP = 0;
+            string temp1, temp2, temp3;
+            while (POP != 1)
+            {
+                Regex regex1 = new Regex(@"\-*\w+\^\-*\w+[\.|\,]*\w*");
+                MatchCollection matches = regex1.Matches(temp);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches)
+                        textBox1.Text = match.Value;
+                    temp1 = textBox1.Text;
+                    int N = 0, m = temp1.Length;
+                    for (int i = 0; i < m; i++)
+                    {
+                        if (temp1[i] == '^')
+                            if (temp1[i + 1] != '-')
+                            {
+                                temp2 = temp1.Substring(0, i);
+                                temp3 = temp1.Substring(i + 1);
+                                double a, b;
+                                a = Convert.ToDouble(temp2);
+                                b = Convert.ToDouble(temp3);
+                                textBox1.Text = Math.Round((Math.Pow(a, b)), 6, MidpointRounding.AwayFromZero).ToString();
+                                break;
+                            }
+                        /* else
+                            {
+                                temp2 = temp1.Substring(0, i);
+                                temp3 = temp1.Substring(i + 1);
+                                double a, b;
+                                a = Convert.ToDouble(temp2);
+                                b = Convert.ToDouble(temp3);
+                                textBox1.Text = Math.Round((Math.Sqrt(a)), 6, MidpointRounding.AwayFromZero).ToString();
+                                break;
+                            }*/
+                    }
+                    temp = temp.Replace(temp1, textBox1.Text);
+
+
+                }
+                else
+                {
+                    POP = 1;
+                }
+            }
+            return (temp);
+        }
+
     }
 
 }
