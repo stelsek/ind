@@ -72,6 +72,13 @@ namespace ind
             return (vnesh2);
 
         }
+        double vnesh1(double X)
+        {
+            double Temp;
+            Temp = X + Convert.ToDouble(H.Text) / 2;
+            return (Temp);
+        }
+
     }
 
 }
