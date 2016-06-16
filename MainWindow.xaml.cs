@@ -79,6 +79,15 @@ namespace ind
             return (vnesh2);
 
         }
+
+        double monster(double x, double y)
+        {
+            return (Funk_f(vnesh1(x), vnesh2(x, y)));
+
+
+
+        }
+
         double obr(double x, double y)
         {
             string s = twoCha.Text;
@@ -94,6 +103,7 @@ namespace ind
             if ((s[0] == '-') && (s[1] == '-')) s = s.Replace("--", "-");
 
             return (Convert.ToDouble(s));
+        }
 
         double vnesh1(double X)
         {
@@ -109,7 +119,7 @@ namespace ind
 
         }
 
-        }
+         
         string Step(string temp)
         {
             int POP = 0;
